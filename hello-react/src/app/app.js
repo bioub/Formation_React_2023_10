@@ -1,5 +1,6 @@
 import Clock from "./clock";
 import Counter from "./counter";
+import Exercices from "./exercices/exercices";
 import Hello from "./hello";
 import UserForm from "./user-form";
 
@@ -13,6 +14,7 @@ function App() {
       <Clock />
       <Counter />
       <UserForm />
+      <Exercices />
     </div>
   );
 }
