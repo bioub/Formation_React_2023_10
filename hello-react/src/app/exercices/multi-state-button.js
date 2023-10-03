@@ -1,17 +1,13 @@
-import { useState } from "react";
-
-function MultiStateButton({items = []}) {
+function MultiStateButton({items = [], value = '', onValueChange = () => {} }) {
   if (!items.length) {
     throw new Error('items can\'t be empty');
   }
-
-  const [value, setValue] = useState(items[0]);
 
   function handleClick() {
     const currentIndex = items.indexOf(value);
     const nextIndex = (currentIndex + 1) % items.length;
     const nextValue = items[nextIndex];
-    setValue(nextValue);
+    onValueChange(nextValue);
   }
 
   return (

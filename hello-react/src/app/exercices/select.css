@@ -1,0 +1,14 @@
+.value {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.menu {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.menu > div {
+  padding: 5px;
+}

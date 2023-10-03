@@ -5,7 +5,7 @@ function Helloworld() {
 
   function handleInput(event) {
     setName(event.target.value)
-  };
+  }
 
   return (
     <div className="Helloworld">
