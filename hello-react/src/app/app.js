@@ -1,4 +1,5 @@
 import Clock from "./clock";
+import Counter from "./counter";
 import Hello from "./hello";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Hello name="Toto" />
       <Hello />
       <Clock />
+      <Counter />
     </div>
   );
 }
