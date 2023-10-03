@@ -1,7 +1,22 @@
-function MultiStateButton() {
+import { useState } from "react";
+
+function MultiStateButton({items = []}) {
+  if (!items.length) {
+    throw new Error('items can\'t be empty');
+  }
+
+  const [value, setValue] = useState(items[0]);
+
+  function handleClick() {
+    const currentIndex = items.indexOf(value);
+    const nextIndex = (currentIndex + 1) % items.length;
+    const nextValue = items[nextIndex];
+    setValue(nextValue);
+  }
+
   return (
-    <button className="MultiStateButton">
-      LA VALEUR DU TABLEAU ITEM A AFFICHER
+    <button className="MultiStateButton" onClick={handleClick}>
+      {value}
     </button>
   );
 }
