@@ -42,7 +42,10 @@ console.log('state initial', store.getState());
 // buttonEl.dispatchEvent(new MouseEvent('click'));
 
 store.subscribe(() => {
-  console.log('state subscribe', store.getState());
+  const state = store.getState();
+  const count = state.count;
+  const name = state.name;
+  console.log('name:', name, 'count:', count);
 });
 store.dispatch({ type: 'INCREMENT_COUNT' });
 store.dispatch({ type: 'UPDATE_NAME', name: 'Romain' });
