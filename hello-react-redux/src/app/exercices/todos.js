@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoForm from "./todo-form";
 import TodosList from "./todos-list";
 import { useDispatch, useSelector } from "react-redux";
 import { todosSelector } from "../store/selectors";
-import { addTodo, setNewTodo } from "../store/actions";
+import { addTodo, requestTodos, setNewTodo } from "../store/actions";
 
 function Todos() {
   // const [todos, setTodos] = useState([
@@ -22,6 +22,10 @@ function Todos() {
   function handleAdd() {
     dispatch(addTodo(newTodo));
   }
+
+  useEffect(() => {
+    dispatch(requestTodos());
+  }, []);
 
   return (
     <div className="Todos">

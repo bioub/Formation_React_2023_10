@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoForm from "./todo-form";
 import TodosList from "./todos-list";
+import { fetchTodos } from "../api";
 
 function Todos() {
   const [todos, setTodos] = useState([
@@ -9,6 +10,15 @@ function Todos() {
     { id: Math.random(), title: 'GHI', completed: false },
   ]);
   const [newTodo, setNewTodo] = useState('ABC');
+
+  useEffect(() => {
+    fetchTodos().then((data) => {
+      setTodos([
+        ...todos,
+        ...data,
+      ]);
+    });
+  }, [])
 
   function handleValueChange(value) {
     setNewTodo(value);
