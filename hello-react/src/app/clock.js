@@ -1,11 +1,17 @@
 import { useState } from "react";
 
-function Clock() {
+function useNow() {
   const [now, setNow] = useState(new Date());
 
   setTimeout(() => {
     setNow(new Date());
   }, 1000);
+
+  return now;
+}
+
+function Clock() {
+  const now = useNow();
 
   return (
     <div className="Clock">

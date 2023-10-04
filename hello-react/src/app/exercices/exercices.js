@@ -2,6 +2,7 @@ import { useState } from "react";
 import Helloworld from "./helloworld";
 import MultiStateButton from "./multi-state-button";
 import Select from "./select";
+import Todos from "./todos";
 
 function Exercices() {
   const names = ['Toto', 'Titi', 'Tata'];
@@ -15,7 +16,8 @@ function Exercices() {
     <div className="Exercices">
       <Helloworld />
       <MultiStateButton items={names} value={name} onValueChange={handleSelected} />
-      <Select items={names} value={name} />
+      <Select items={names} value={name} onValueChange={handleSelected} />
+      <Todos />
     </div>
   );
 }

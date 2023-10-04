@@ -1,4 +1,4 @@
-function Hello({ name = '' }) {
+function Hello({ name = '', age = 0, isActive = false }) {
   return (
     <div className="Hello">
       Hello {name}

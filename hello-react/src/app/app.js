@@ -5,11 +5,17 @@ import Hello from "./hello";
 import UserForm from "./user-form";
 
 function App() {
+
+  const propsHello = {
+    name: 'Toto',
+    age: 20,
+  };
   
   return (
     <div className="App">
-      <Hello name="Romain" />
+      <Hello name="Romain" age={123} isActive />
       <Hello name="Toto" />
+      <Hello {...propsHello} />
       <Hello />
       <Clock />
       <Counter />

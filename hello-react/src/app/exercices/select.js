@@ -1,11 +1,16 @@
 import './select.css';
 import { useState } from 'react';
 
-function Select({ items = [], value = '' }) {
+function Select({ items = [], value = '', onValueChange = () => {} }) {
   const [open, setOpen] = useState(false);
 
   function handleValueClick() {
     setOpen(!open);
+  }
+
+  function handleItemClick(item) {
+    onValueChange(item);
+    setOpen(false);
   }
 
   /*let menu;
@@ -27,18 +32,18 @@ function Select({ items = [], value = '' }) {
     tabJsx.push(<div key={item}>{item}</div>)
   }
   */
-  const tabJsx = items.map((item) => <div key={item}>{item}</div>);
+  const tabJsx = items.map((item) => (
+    <div key={item} onClick={() => handleItemClick(item)}>
+      {item}
+    </div>
+  ));
 
   return (
     <div className="Select">
       <div className="value" onClick={handleValueClick}>
         {value}
       </div>
-      {open && (
-        <div className="menu">
-          {tabJsx}
-        </div>
-      )}
+      {open && <div className="menu">{tabJsx}</div>}
     </div>
   );
 }
