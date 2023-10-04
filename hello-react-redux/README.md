@@ -13,6 +13,7 @@ Dans `src/app/store/reducer.js`
 
 ```js
 const initialState = {
+  count: 0,
   name: "Romain",
   todos: {
     items: [
