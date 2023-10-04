@@ -1,9 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { incrementCount, updateName } from './actions';
+import { addTodo, incrementCount, setNewTodo, updateName } from './actions';
 
 const initialState = {
   count: 0,
   name: 'Toto',
+  todos: {
+    items: [
+      { id: Math.random(), title: 'DEF', completed: false },
+      { id: Math.random(), title: 'XYZ', completed: true },
+      { id: Math.random(), title: 'GHI', completed: false },
+    ],
+    newTodo: 'ABC',
+  }
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -13,5 +21,26 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(updateName, (state, action) => {
       state.name = action.payload;
+    })
+    .addCase(addTodo, (state, action) => {
+      // Sans Redux Toolkit, on doit gérer
+      // l'immuabilité du state nous même :
+      // return {
+      //   ...state,
+      //   todos: {
+      //     ...state.todos,
+      //     items: [
+      //       ...state.todos.items,
+      //       action.payload
+      //     ]
+      //   }
+      // };
+
+      // Avec Redux Toolkit c'est lui qui gère :
+      state.todos.items.push(action.payload);
+      // state.todos.newTodo = '';
+    })
+    .addCase(setNewTodo, (state, action) => {
+      state.todos.newTodo = action.payload;
     });
 });

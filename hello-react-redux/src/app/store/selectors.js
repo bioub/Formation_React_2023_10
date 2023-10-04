@@ -5,3 +5,7 @@ export function countSelector(state) {
 export function nameSelector(state) {
   return state.name;
 }
+
+export function todosSelector(state) {
+  return state.todos;
+}
